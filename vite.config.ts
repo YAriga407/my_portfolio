@@ -12,3 +12,8 @@ export default defineConfig({
     tsconfigPaths(),
   ],
 });
+
+export default defineConfig({
+  base: "/my_portfolio/",
+  // existing plugins...
+});
