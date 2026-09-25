@@ -11,9 +11,10 @@ export default function Home() {
           </A>
           <div class="nav-links">
             <a href="#about">About</a>
-            <a href="#projects">Projects</a>
+            <A href="/projects">Projects</A>
+            <A href="/education">Education</A>
             <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
+            <A href="/contact">Contact</A>
           </div>
         </nav>
       </header>
@@ -27,7 +28,7 @@ export default function Home() {
             <p>
               I build clean, useful, and responsive websites and applications.
             </p>
-            <a class="button" href="#projects">View my work</a>
+            <A class="button" href="/projects">View my work</A>
           </div>
         </section>
 
