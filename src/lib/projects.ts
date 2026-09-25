@@ -1,7 +1,3 @@
-import projectFinance from "@/assets/project-finance.jpg";
-import projectFashion from "@/assets/project-fashion.jpg";
-import projectArt from "@/assets/project-art.jpg";
-import projectHealth from "@/assets/project-health.jpg";
 import cadCup from "@/assets/cad-cup.png";
 import cadShovel from "@/assets/cad-shovel.png";
 import cadWheel from "@/assets/cad-wheel.png";
