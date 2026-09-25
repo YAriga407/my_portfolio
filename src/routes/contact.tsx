@@ -1,5 +1,7 @@
 import { useState, type FormEvent } from "react";
+
 import Header from "@/components/Header";
+import { sendContactMessage } from "@/lib/contact.functions";
 
 export default function ContactPage() {
   const [status, setStatus] = useState<"idle" | "sending" | "done">("idle");
@@ -10,30 +12,20 @@ export default function ContactPage() {
     event.preventDefault();
     const form = event.currentTarget;
     const formData = new FormData(form);
+
     setStatus("sending");
     setFeedback(null);
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: String(formData.get("name") ?? ""),
-          email: String(formData.get("email") ?? ""),
-          message: String(formData.get("message") ?? ""),
-        }),
+      const result = await sendContactMessage({
+        name: String(formData.get("name") ?? ""),
+        email: String(formData.get("email") ?? ""),
+        message: String(formData.get("message") ?? ""),
       });
 
-      const result = await response.json();
-
-      if (response.ok && result.ok !== false) {
-        setOk(true);
-        setFeedback(result.message || "Message sent successfully!");
-        form.reset();
-      } else {
-        setOk(false);
-        setFeedback(result.message || "Please check your details and try again.");
-      }
+      setOk(result.ok);
+      setFeedback(result.message);
+      if (result.ok) form.reset();
     } catch {
       setOk(false);
       setFeedback("Please check your details and try again.");
